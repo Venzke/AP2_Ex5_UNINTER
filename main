@@ -1,0 +1,143 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+
+int main() {
+
+	setlocale(LC_ALL, "Portuguese"); //Acentuação.
+
+	struct ponto2d //Criação da struct.
+	{
+		float x, y;
+	};
+	struct ponto2d ponto_inicial, *pontX1, *pontY1; //Nomeando a struct. E utilizando ponteiros para acessar o conteúdo contido na struct.
+
+	pontX1 = &ponto_inicial; //Ponteiros recebem acesso a struct.
+	pontY1 = &ponto_inicial;
+
+	struct ponto2d ponto_final, *pontX2, *pontY2; //Nomeando a struct. E utilizando ponteiros para acessar o conteúdo contido na struct.
+
+	pontX2 = &ponto_final;//Ponteiros recebem acesso a struct.
+	pontY2 = &ponto_final;
+
+	int op; //Variavel para receber o numero da opção selecionada no menu.
+	double r1, r2, r3, result; //variaveis para receber os resultados das contas.
+
+	printf("Exercício 5 ---------------------------------------------------------------------------- Gabriel Moreira - RU: 3329252");
+	printf("\n\n");
+
+	printf(":.:.:.:.:.:.:.:.:MENU:.:.:.:.:.:.:.:.:");
+	printf("\n\n");
+
+	printf(":.: {1} - Digitar os valores do primeiro ponto :.:");
+	printf("\n");
+
+	printf(":.: {2} - Digitar os valores do segundo ponto :.:");		//Menu.
+	printf("\n");
+
+	printf(":.: {3} - Mostrar a distância entre os pontos :.:");
+	printf("\n");
+
+	printf(":.: {4} - Sair :.:");
+	printf("\n\n");
+
+	printf("Digite a opção: ");
+	scanf_s("%i", &op); //Seleção do menu.
+	printf("\n");
+
+	while (1) //Enquanto op for diferente de 4 continua rodando o loop.
+	{
+
+		switch (op)
+		{
+
+		case 1: 
+
+			printf("Primeira opção selecionada!");
+			printf("\n");
+
+			printf("Informe o valor do 1° ponto inicial X: ");	//Informar os valores.
+			scanf_s("%f", &pontX1->x);
+			printf("Informe o valor do 2° ponto inicial Y: ");
+			scanf_s("%f", &pontY1->y);
+
+			printf("\n\n");
+			printf("Validação dos valores digitados: X = %.2f && Y = %.2f", pontX1->x, pontY1->y); //validação.
+			printf("\n");
+
+			printf("------------------------------------------------------------------------------------------------------------------------");
+			printf("\n\n");
+
+			break;
+
+		case 2:
+
+			printf("Segunda opção selecionada!");
+			printf("\n");
+
+			printf("Informe o valor do 1° ponto final X: "); //Informar os valores.
+			scanf_s("%f", &pontX2->x);
+			printf("Informe o valor do 2° ponto final Y: ");
+			scanf_s("%f", &pontY2->y);
+
+			printf("\n\n");
+			printf("Validação dos valores digitados: X = %.2f && Y = %.2f", pontX2->x, pontY2->y); //Validação.
+			printf("\n");
+
+			printf("------------------------------------------------------------------------------------------------------------------------");
+			printf("\n\n");
+
+			break;
+
+		case 3:
+
+			 r1 = pontX1->x - pontX2->x;	//Operações matemáticas.
+			 r2 = pontY1->y - pontY2->y;
+
+			 r3 = pow(r1, 2) + pow(r2, 2);
+
+			result = sqrt(r3);
+
+			printf("Terceira opção selecionada!");
+			printf("\n");
+
+			printf("A distância entre os dois pontos é: %.2f", result); //Validação do resultado das operaçãos.
+			printf("\n\n");
+
+			break;
+
+		case 4:
+
+			printf("Programa finalizado...");
+			printf("\n");
+			return 0; //Conforme escrito no menu, opção 4 é SAIR. Logo ao selecionar a opção entrará no case 4 que contém o return.
+
+		default:
+
+			printf("Opção inválida... Tente novamente!");
+			printf("\n\n");
+
+			break;
+		}
+
+		printf(":.:.:.:.:.:.:.:.:MENU:.:.:.:.:.:.:.:.:");
+		printf("\n\n");
+
+		printf(":.: {1} - Digitar os valores do primeiro ponto :.:");
+		printf("\n");
+
+		printf(":.: {2} - Digitar os valores do segundo ponto :.:"); //Menu novamente para interromper o loop causado pela escolha.
+		printf("\n");
+
+		printf(":.: {3} - Mostrar a distância entre os pontos :.:");
+		printf("\n");
+
+		printf(":.: {4} - Sair :.:");
+		printf("\n\n");
+
+		printf("Digite a opção: ");
+		scanf_s("%i", &op);
+		printf("\n");
+	}
+}
